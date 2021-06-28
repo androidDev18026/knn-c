@@ -7,27 +7,27 @@
 
 struct Point 
 {
-	int x;
-	int y;
+  int x;
+  int y;
 };
 
 void init(struct Point* p, const unsigned int size)
 {
-	assert(size > 0);
+  assert(size > 0);
 	
-	for (unsigned int i = 0; i < size; ++i){
-		*&(p+i)->x = rand() % 100;
-		*&(p+i)->y = rand() % 100;
-	}
-	puts("Initialized points matrix.");
+  for (unsigned int i = 0; i < size; ++i){
+    *&(p+i)->x = rand() % 100;
+    *&(p+i)->y = rand() % 100;
+  }
+  puts("Initialized points matrix.");
 }
 
 float* dist(struct Point p, struct Point* rest, const unsigned int size)
 {
   float* euclidian_dist = malloc(size*sizeof(float));
   if (euclidian_dist == NULL) {
-		perror("Allocation failed!");
-	}
+    perror("Allocation failed!");
+  }
 	
   for (unsigned int i = 0; i < size; ++i)
   {
