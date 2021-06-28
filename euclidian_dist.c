@@ -64,9 +64,10 @@ int* add(struct Point* p, const unsigned int size)
 int main(int argc, const char** argv)
 {
   static const unsigned int SIZE = 10;
+  
   srand(time(NULL));
   
-	struct Point* points = (struct Point*) malloc (SIZE * sizeof(struct Point));
+  struct Point* points = (struct Point*) malloc (SIZE * sizeof(struct Point));
   if (points == NULL) {
 		perror("Allocation failed!");
 	}
