@@ -69,15 +69,15 @@ int main(int argc, const char** argv)
   
   struct Point* points = (struct Point*) malloc (SIZE * sizeof(struct Point));
   if (points == NULL) {
-		perror("Allocation failed!");
-	}
+    perror("Allocation failed!");
+  }
 	
   init(points, SIZE);
   show_points(points, SIZE);
   
   float** euclidian_dist = malloc(SIZE * sizeof(float*));
   if (euclidian_dist == NULL) {
-		perror("Allocation failed!");
+    perror("Allocation failed!");
   }
   
   puts("============Distance============");
