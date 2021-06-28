@@ -31,27 +31,27 @@ void init(struct Point* p, const unsigned int size)
 
 struct Point* read_p_from_file(const char* filename, unsigned const int flen)
 {
-	FILE* fp = fopen(filename, "r");
+  FILE* fp = fopen(filename, "r");
 	
-	char* line;
-	size_t len = 0;
+  char* line;
+  size_t len = 0;
   size_t read;
-	static unsigned long count = 0;
+  static unsigned long count = 0;
   
   assert(fp != NULL);
   
- 	struct Point* points = malloc (flen * sizeof(struct Point));
- 	if (points == NULL) {
- 		perror("Allocation failed");
- 	}
+  struct Point* points = malloc (flen * sizeof(struct Point));
+  if (points == NULL) {
+    perror("Allocation failed");
+  }
  	
   while ((read = getline(&line, &len, fp)) != -1) {
     *&(points+count)->x = atoi(strtok(line, DELIM));
     *&(points+count)->y = atoi(strtok(NULL, DELIM));
   	++count;
-   }
+  }
 	
-	free(line);
+  free(line);
 	
   fclose(fp);
   
@@ -100,32 +100,32 @@ int* add(struct Point* p, const unsigned int size)
 unsigned long get_num_lines(const char* filename)
 {
 
-	FILE* fp = fopen(filename, "r");
-	char ch;
-	unsigned long nlines = 0;
+  FILE* fp = fopen(filename, "r");
+  char ch;
+  unsigned long nlines = 0;
 	
-	assert (fp != NULL);
+  assert (fp != NULL);
 		
-	while((ch = fgetc(fp)) != EOF) 
-	{
-		nlines = ch == '\n' ? nlines + 1 : nlines;
-	}
+  while((ch = fgetc(fp)) != EOF) 
+  {
+    nlines = ch == '\n' ? nlines + 1 : nlines;
+  }
 	
-	printf("Read %ld pairs of points from file %s.\n", nlines, filename);
+  printf("Read %ld pairs of points from file %s.\n", nlines, filename);
 	 
-	return nlines;
+  return nlines;
 }
 
 
 int main(int argc, const char** argv)
 {
 	
-	if (argc != 2) {
-		printf("Usage: %s <filename>\n", *argv);
-		exit(-1);
-	} 
+  if (argc != 2) {
+    printf("Usage: %s <filename>\n", *argv);
+    exit(-1);
+  } 
 	
-	const char* filename = *(argv+1);
+  const char* filename = *(argv+1);
 	
   unsigned const long SIZE = get_num_lines(filename);
   
