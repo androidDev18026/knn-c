@@ -24,7 +24,7 @@ struct Point
   int y;
 };
 
-// Random initialization of the points
+// Random initialization of the points - debugging
 void init(struct Point* p, const unsigned int size)
 {
   assert(size > 0);
