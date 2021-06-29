@@ -1,6 +1,6 @@
 /* Reads pairs of (x,y) points from file and calculates the euclidian distance between the points 
  *
- * Compile : gcc -Wall -std=c99 -g -O3 -lm -o out main.c                 
+ * Compile : gcc -Wall -std=c99 -g -O3 -lm -o out euclidian_dist.c                 
  * Add < -D _DEBUG > for verbose printing of the points,                   
  * the distance and the adjacency matrix.                   
  */
