@@ -2,7 +2,7 @@
  * Reads pairs of (x,y) points from file and calculates the euclidean distance
  * between pairs of point and a boolean adjecency matrix with the points that
  * are close to each other represented with 1, otherwise 0. The similarity of 
- * 2 points is defined by a threashold provided by the user.
+ * 2 points is defined by a threshold provided by the user.
  *  
  * Compile : gcc -Wall -std=c99 -g -O3 -lm -o out euclidean_dist.c                 
  * Add < -D _DEBUG > argument for verbose printing of the points,                   
@@ -147,14 +147,14 @@ unsigned long get_num_points(const char* filename)
 }
 
 void find_similar(struct Point* points, float** distances, unsigned const int size, 
-                    const float threashold, int** similar) 
+                    const float threshold, int** similar) 
 {
   float* row_dist;
   
   for (unsigned int i = 0; i < size; ++i) {
     row_dist = *(distances + i);
     for (unsigned int j = 0; j < size; ++j) {
-       *(*(similar+i)+j) = *(row_dist+j) && *(row_dist+j) < threashold ? 1 : 0;
+       *(*(similar+i)+j) = *(row_dist+j) && *(row_dist+j) < threshold ? 1 : 0;
     }   
   }
 }
@@ -163,7 +163,7 @@ int main(int argc, const char** argv)
 {
 	
   if (argc != 3) {
-    fprintf(stderr, "Usage: %s <filename> <similarity threashold>\n", *argv);
+    fprintf(stderr, "Usage: %s <filename> <similarity threshold>\n", *argv);
     exit(-1);
   } 
 	
