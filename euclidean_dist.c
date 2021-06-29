@@ -105,7 +105,7 @@ extern inline void show_dist_matrix(float** euclidean_dist, unsigned const int s
 
 static void show_adj_matrix(int** similar, unsigned const int size)
 {
-	puts("===========Adjacency Matrix============");
+  puts("===========Adjacency Matrix============");
   printf("%-3s", "   ");
   for (unsigned int i = 0; i < size; ++i) {
     printf("%-3d", (i+1));
@@ -141,7 +141,7 @@ unsigned long get_num_points(const char* filename)
 	
   printf("Read %ld pairs of points from file %s.\n", nlines, filename);
 	
-	fclose(fp);
+  fclose(fp);
 	
   return nlines;
 }
@@ -208,7 +208,7 @@ int main(int argc, const char** argv)
   #ifdef _DEBUG
   show_points(points, SIZE);
   show_dist_matrix(euclidean_dist, SIZE);
-	show_adj_matrix(similar, SIZE);  
+  show_adj_matrix(similar, SIZE);  
   #endif
   
   #ifndef _DEBUG
@@ -225,4 +225,3 @@ int main(int argc, const char** argv)
   
   return EXIT_SUCCESS;
 }
-
