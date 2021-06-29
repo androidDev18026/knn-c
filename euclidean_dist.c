@@ -1,6 +1,6 @@
 /* Reads pairs of (x,y) points from file and calculates the euclidian distance between the points 
  *
- * Compile : gcc -Wall -std=c99 -g -O3 -lm -o out euclidian_dist.c                 
+ * Compile : gcc -Wall -std=c99 -g -O3 -lm -o out euclidean_dist.c                 
  * Add < -D _DEBUG > for verbose printing of the points,                   
  * the distance and the adjacency matrix.                   
  */
@@ -67,18 +67,18 @@ struct Point* read_p_from_file(const char* filename, unsigned const int flen)
 
 float* dist(struct Point p, struct Point* rest, unsigned const int size)
 {
-  float* euclidian_dist = malloc (size*sizeof(float));
-  if (euclidian_dist == NULL) {
+  float* euclidean_dist = malloc (size*sizeof(float));
+  if (euclidean_dist == NULL) {
     perror("Allocation failed!");
     exit(-1);
   }
 	
   for (unsigned int i = 0; i < size; ++i)
   {
-    *(euclidian_dist+i) = sqrt(pow(p.x-*&(rest+i)->x,2) + pow(p.y-*&(rest+i)->y,2));
+    *(euclidean_dist+i) = sqrt(pow(p.x-*&(rest+i)->x,2) + pow(p.y-*&(rest+i)->y,2));
   }
 	
-  return euclidian_dist;
+  return euclidean_dist;
 }
 
 void show_points(struct Point* points, unsigned const int size)
@@ -141,8 +141,8 @@ int main(int argc, const char** argv)
   // init(points, SIZE);
 	
   printf("Finding pairs with distance less than %.2f\n", th);
-  float** euclidian_dist = malloc(SIZE * sizeof(float*));
-  if (euclidian_dist == NULL) {
+  float** euclidean_dist = malloc(SIZE * sizeof(float*));
+  if (euclidean_dist == NULL) {
     perror("Allocation failed!");
     exit(-1);
   }
@@ -159,10 +159,10 @@ int main(int argc, const char** argv)
   gettimeofday(&start, 0);
   
   for (unsigned int i = 0; i < SIZE; ++i) {
-    *(euclidian_dist+i) = dist(*(points+i), points, SIZE);
+    *(euclidean_dist+i) = dist(*(points+i), points, SIZE);
   }
   
-  find_similar(points, euclidian_dist, SIZE, th, similar);
+  find_similar(points, euclidean_dist, SIZE, th, similar);
   
   gettimeofday(&end, 0);  
    
@@ -172,7 +172,7 @@ int main(int argc, const char** argv)
   puts("============Distance Matrix============");
   for (unsigned int i = 0; i < SIZE; ++i) {
     for (unsigned int j = 0; j < SIZE; ++j) {
-      printf("%-7.2f", *(*(euclidian_dist+i) + j));
+      printf("%-7.2f", *(*(euclidean_dist+i) + j));
     }
     puts("");
   } 
@@ -208,7 +208,7 @@ int main(int argc, const char** argv)
   
   free(points);
   free(similar);
-  free(euclidian_dist);
+  free(euclidean_dist);
   
   return EXIT_SUCCESS;
 }
