@@ -119,7 +119,6 @@ void find_similar(struct Point* points, float** distances, unsigned const int si
        *(*(similar+i)+j) = *(row_dist+j) && *(row_dist+j) < threashold ? 1 : 0;
     }   
   }
-  
 }
 
 int main(int argc, const char** argv)
