@@ -24,7 +24,7 @@ struct Point
   int y;
 };
 
-/*
+// Random initialization of the points
 void init(struct Point* p, const unsigned int size)
 {
   assert(size > 0);
@@ -35,7 +35,6 @@ void init(struct Point* p, const unsigned int size)
   }
   puts("Initialized points matrix.");
 }
-*/
 
 struct Point* read_p_from_file(const char* filename, unsigned const int flen)
 {
@@ -139,7 +138,8 @@ int main(int argc, const char** argv)
   static struct timeval start, end;
   
   struct Point* points = read_p_from_file(filename, SIZE);
-  
+  // init(points, SIZE);
+	
   printf("Finding pairs with distance less than %.2f\n", th);
   float** euclidian_dist = malloc(SIZE * sizeof(float*));
   if (euclidian_dist == NULL) {
